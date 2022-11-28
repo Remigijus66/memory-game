@@ -5,7 +5,8 @@ export const generalSlice = createSlice({
   initialState: {
 
     deck: [],
-    filter: ['ACE'],
+    filteredDeck: [],
+    filter: ['ACE', 'KING', 'QUEEN'],
     front: false,
     try1: -1,
     try2: -1,
@@ -17,13 +18,15 @@ export const generalSlice = createSlice({
     setDeck: (state, action) => {
       state.deck = action.payload
     },
+    setFilteredDeck: (state, action) => {
+      state.filteredDeck = action.payload
+    },
     flipToFront: (state, action) => {
-
-      state.deck[action.payload].front = true
+      state.filteredDeck[action.payload].front = true
 
     },
     flipToBack: (state, action) => {
-      state.deck[action.payload].front = false
+      state.filteredDeck[action.payload].front = false
     },
 
     setFilter: (state, action) => {
@@ -44,6 +47,6 @@ export const generalSlice = createSlice({
 
 })
 
-export const { setDeck, setFilter, setFront, flipToFront, flipToBack, setTry1, setTry2, addGuess } = generalSlice.actions
+export const { setDeck, setFilteredDeck, setFilter, setFront, flipToFront, flipToBack, setTry1, setTry2, addGuess } = generalSlice.actions
 
 export default generalSlice.reducer

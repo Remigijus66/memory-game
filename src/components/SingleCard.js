@@ -13,14 +13,14 @@ const SingleCard = ({ card, arr, index }) => {
   const cardBack = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzx9lXgWEGlFwVt9RNBKQwHlbRbcU44ScUOQ&usqp=CAU"
 
 
-  // const flip = () => {
-  //   if (card.front === false) {
-  //     dispach(flipToFront(index))
-  //   } else {
-  //     dispach(flipToBack(index))
-  //   }
-  //   console.log(card)
-  // }
+  const flip = () => {
+    if (card.front === false) {
+      dispach(flipToFront(index))
+    } else {
+      dispach(flipToBack(index))
+    }
+    console.log(card)
+  }
 
   const match = (card1, card2) => {
     if ((card1.value === card2.value) && ((card1.suit === 'HEARTS' && card2.suit === 'DIAMONDS') || (card1.suit === 'DIAMONDS' && card2.suit === 'HEARTS') || (card1.suit === 'SPADES' && card2.suit === 'CLUBS') || (card1.suit === 'CLUBS' && card2.suit === 'SPADES'))) {
@@ -54,7 +54,7 @@ const SingleCard = ({ card, arr, index }) => {
     }
   }, [try1, try2])
 
-  const quess = () => {
+  const guess = () => {
     if (try1 === -1) {
       dispach(setTry1(index))
       dispach(flipToFront(index))
@@ -72,8 +72,8 @@ const SingleCard = ({ card, arr, index }) => {
 
     <div >
 
-      {card.front && <img className='card' src={card.image} alt="" />}
-      {!card.front && <img className='card' src={cardBack} alt="" onClick={quess} />}
+      {card.front && <img className='card' src={card.image} alt="" onClick={flip} />}
+      {!card.front && <img className='card' src={cardBack} alt="" onClick={guess} />}
 
     </div>
 
